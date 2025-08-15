@@ -11,7 +11,7 @@ Foi desenvolvido para demonstrar a criação e interação entre classes represe
 - **Boas práticas de validação de dados**
 - **Testes unitários com `unittest`**
 
-> 💡 Observação: Embora este projeto utilize **Agregação** (onde Livro pode existir sem Autores ou Capítulos), o autor do código observa que, em um caso real, poderia ser mais adequado usar **Composição**, exigindo que o livro seja criado já com autores e capítulos.
+> 💡 Observação: Embora este projeto utilize **Agregação** (onde Livro pode existir sem Autores ou Capítulos), eu observo que, em um caso real, poderia ser mais adequado usar **Composição**, exigindo que o livro seja criado já com autores e capítulos.
 
 ---
 
