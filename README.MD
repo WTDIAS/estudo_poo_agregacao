@@ -43,29 +43,13 @@ poo\_agregacao/
 
 ## 📜 Como executar o projeto
 
-### 1️⃣ Clonar o repositório
-```bash
-git clone https://github.com/seu-usuario/poo_agregacao.git
-cd poo_agregacao
-````
-
-### 2️⃣ Criar e ativar um ambiente virtual (opcional, mas recomendado)
-
-```bash
-python -m venv venv
-# Windows
-venv\Scripts\activate
-# Linux/Mac
-source venv/bin/activate
-```
-
-### 3️⃣ Executar o código principal
+### Executar o código principal
 
 ```bash
 python src/agregacao.py
 ```
 
----
+
 
 ## 🧪 Executando os testes
 
