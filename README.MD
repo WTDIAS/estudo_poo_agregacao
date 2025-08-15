@@ -1,101 +1,146 @@
-```markdown
-# 📚 Estudo de POO com Python
 
-Este projeto tem como objetivo explorar os principais conceitos da Programação Orientada a Objetos (POO) utilizando Python, por meio da modelagem de um sistema simples de livros, autores e capítulos.
+# 📚 Estudo de POO em Python – Conceito de Agregação
 
-## 🧠 Conceitos Abordados
+Este projeto é um exemplo prático do uso de **Programação Orientada a Objetos (POO)** em Python, com foco no conceito de **Agregação**.  
+Foi desenvolvido para demonstrar a criação e interação entre classes representando um **Livro**, seus **Autores** e **Capítulos**.
 
+## 🚀 Conceitos abordados
 - **Herança**
 - **Encapsulamento**
 - **Agregação**
+- **Boas práticas de validação de dados**
+- **Testes unitários com `unittest`**
 
-> ⚠️ **Nota pessoal:**  
-> O exemplo proposto originalmente pela IA Gemini utiliza o conceito de **agregação** para modelar a classe `Livro`, permitindo que ela exista sem autores ou capítulos. No entanto, considero que o mais adequado seria aplicar **composição**, exigindo que `Livro` receba obrigatoriamente `Autor` e `Capitulo` como parâmetros no momento da criação. Isso garantiria maior integridade na modelagem do domínio.
+> 💡 Observação: Embora este projeto utilize **Agregação** (onde Livro pode existir sem Autores ou Capítulos), o autor do código observa que, em um caso real, poderia ser mais adequado usar **Composição**, exigindo que o livro seja criado já com autores e capítulos.
 
 ---
 
-## 🏗️ Estrutura do Projeto
-
+## 📂 Estrutura do projeto
 ```
-poo_agregacao/
+
+poo\_agregacao/
+│
 ├── src/
-│   ├── __init__.py
-│   ├── agregacao.py
+│   ├── **init**.py
+│   ├── agregacao.py       # Código principal com as classes Autor, Capitulo e Livro
+│
 ├── tests/
-│   ├── __init__.py
-│   ├── test_agregacao.py
+│   ├── **init**.py
+│   ├── test\_agregacao.py  # Testes unitários para as classes
+│
 ├── .gitignore
-└── README.md
+├── README.md
+
+````
+
+---
+
+## 🛠️ Tecnologias utilizadas
+- **Python 3.10+**
+- **unittest** (biblioteca padrão do Python para testes)
+
+---
+
+## 📜 Como executar o projeto
+
+### 1️⃣ Clonar o repositório
+```bash
+git clone https://github.com/seu-usuario/poo_agregacao.git
+cd poo_agregacao
+````
+
+### 2️⃣ Criar e ativar um ambiente virtual (opcional, mas recomendado)
+
+```bash
+python -m venv venv
+# Windows
+venv\Scripts\activate
+# Linux/Mac
+source venv/bin/activate
+```
+
+### 3️⃣ Executar o código principal
+
+```bash
+python src/agregacao.py
 ```
 
 ---
 
-## 📦 Módulos
-
-### `Autor`
-Representa um autor com nome e nacionalidade, com validações para garantir dados consistentes.
-
-### `Capitulo`
-Modela um capítulo com título e número de páginas, também com validações.
-
-### `Livro`
-Agrega autores e capítulos, permitindo o cadastro posterior. Contém métodos para adicionar autores e capítulos dinamicamente.
-
----
-
-## 🧪 Testes
-
-Os testes foram desenvolvidos com `unittest` e cobrem:
-
-- Validação de atributos
-- Comportamento esperado das classes
-- Casos de erro com dados inválidos
+## 🧪 Executando os testes
 
 Para rodar os testes, basta executar o arquivo de testes diretamente:
 
+```bash
 python tests/test_agregacao.py
+```
+
 Como o script contém:
 
+```
 if __name__ == "__main__":
     unittest.main()
+```
+
 Os testes serão executados automaticamente.
 
 ---
 
-## ▶️ Execução
+## 📌 Funcionalidades principais
 
-O script principal (`agregacao.py`) contém um exemplo de uso das classes:
+* **Classe `Autor`**
+
+  * Armazena nome e nacionalidade.
+  * Valida dados no momento da atribuição.
+
+* **Classe `Capitulo`**
+
+  * Armazena título e número de páginas.
+  * Valida dados para evitar valores inválidos.
+
+* **Classe `Livro`**
+
+  * Pode ter zero ou mais autores e capítulos.
+  * Métodos para cadastrar autores e capítulos.
+
+---
+
+## 📷 Exemplo de uso
 
 ```python
-if __name__ == "__main__":
-    autor1 = Autor("Flavio Augusto", "Brasileira")
-    capitulo1 = Capitulo("O clique da confiança", 5)
-    capitulo2 = Capitulo("O bico", 6)
-    livro1 = Livro("Ponto de inflexão", 2022)
-    livro1.cadastrar_autores(autor1)
-    livro1.cadastrar_capitulo(capitulo1)
-    livro1.cadastrar_capitulo(capitulo2)
+from src.agregacao import Autor, Capitulo, Livro
 
-    print(livro1)
+autor1 = Autor("Flavio Augusto", "Brasileira")
+cap1 = Capitulo("O clique da confiança", 5)
+cap2 = Capitulo("O bico", 6)
+
+livro = Livro("Ponto de inflexão", 2022)
+livro.cadastrar_autores(autor1)
+livro.cadastrar_capitulo(cap1)
+livro.cadastrar_capitulo(cap2)
+
+print(livro)
+```
+
+### 💡 Saída esperada:
+
+```
+Livro: Ponto de inflexão 2022 
+Autores: Nome do autor: Flavio Augusto | Nacionalidade: Brasileira 
+Capítulos: 
+ -Titulo do capítulo: O clique da confiança | Quantidade de paginas: 5
+ -Titulo do capítulo: O bico | Quantidade de paginas: 6
 ```
 
 ---
 
-## 💡 Aprendizados
+## 📄 Licença
 
-Este projeto reforça a importância de:
-
-- Validar dados de entrada
-- Separar responsabilidades entre classes
-- Refletir sobre o uso adequado de agregação vs. composição
-- POO Programação Orientada a Objetos
----
-
-## 📜 Licença
-
-Este projeto é apenas para fins educacionais e não possui uma licença específica. Sinta-se à vontade para estudar, modificar e compartilhar.
+Este projeto está sob a licença MIT.
+Sinta-se à vontade para utilizar, modificar e distribuir.
 
 ---
 
-Feito com 💻 e curiosidade por WALDIR.
-```
+✍️ **Autor:** Waldir Tiago Dias\
+💬 Projeto criado para fins de estudo e prática de POO em Python.
+

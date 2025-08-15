@@ -5,11 +5,12 @@
 # .Agregação
 #=================================================
 
-# OBS:
-# Neste exemplo proposto pela IA GEMINI não concordei pois desta forma poderei criar um livro
-# sem capítulos e sem autores o que define como AGREGAÇÃO. No meu ponto de vista, livro deveria
-# utilizar do conceito de composição onde para criar livro deveria ser passado como parâmetro: 
-# titulo: str, ano:int, autores:Autor, capitulos:Capitulo
+"""
+OBS:
+Observação: Embora este projeto utilize Agregação (onde Livro pode existir sem Autores ou Capítulos), 
+eu observo que, em um caso real, seria mais adequado usar Composição, exigindo que o livro seja criado 
+já com autores e capítulos.
+"""
 
 #====================================
 # CLASSE AUTOR
