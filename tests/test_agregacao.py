@@ -78,9 +78,11 @@ class TestCapitulo(unittest.TestCase):
 class TestLivro(unittest.TestCase):
     
     def setUp(self):        
-        self.titulo = "O corpo fala"
+        self.titulo = "Python na prática"
         self.ano_publicacao = 2021
-        self.livro = Livro(self.titulo,self.ano_publicacao)
+        self.livro = Livro(self.titulo, self.ano_publicacao)
+        self.autor_valido = Autor("Waldir Souza", "Brasileira")
+        self.capitulo_valido = Capitulo("POO com Python", 10)
     
     def test_livro_sucesso(self):
         # verifica se o retorno esta funcionando como deveria
@@ -102,6 +104,32 @@ class TestLivro(unittest.TestCase):
             with self.subTest(valor=valor):
                 with self.assertRaises(ValueError):
                     self.livro.ano_publicacao = valor
+
+    # Testes para cadastrar_autores
+    def test_cadastrar_autor_valido(self):
+        #verifica se o metodo cadastrar autoresesta funcionando como esperado
+        self.livro.cadastrar_autores(self.autor_valido)
+        self.assertIn(self.autor_valido, self.livro.autores)
+
+    def test_cadastrar_autor_invalido(self):
+        #verifica que irá dar falha ao cadastrar autor com valor inválido
+        with self.assertRaises(ValueError) as contexto:
+            self.livro.cadastrar_autores("Não é um autor")
+        self.assertEqual(str(contexto.exception), "O autor deve ser um objeto do tipo Autor.")
+
+    # Testes para cadastrar_capitulo
+    def test_cadastrar_capitulo_valido(self):
+        #verifica se o metodo cadastrar capitulo esta funcionando como esperado
+        self.livro.cadastrar_capitulo(self.capitulo_valido)
+        self.assertIn(self.capitulo_valido, self.livro.capitulos)
+
+    def test_cadastrar_capitulo_invalido(self):
+        #verifica que irá dar falha ao cadastrar capitulo com valor inválido
+        with self.assertRaises(ValueError) as contexto:
+            self.livro.cadastrar_capitulo(["lista", "inválida"])
+        self.assertEqual(str(contexto.exception), "O capítulo deve ser um objeto do tipo Capítulo.")
+
+
 
 
 
